@@ -16,6 +16,7 @@
         event: 'whatsapp_click',
         cta_location: link.dataset.whatsapp,
         intent: link.dataset.intent || 'consulta',
+        property_id: link.dataset.property || null,
         page_path: window.location.pathname,
         ...campaign
       };
@@ -24,4 +25,20 @@
       // Navigation is native and does not depend on a tracker succeeding.
     });
   });
+  document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    let count = 0;
+    document.querySelectorAll('.card[data-kind]').forEach(card => {
+      card.hidden = button.dataset.filter !== 'Todas' && card.dataset.kind !== button.dataset.filter;
+      if (!card.hidden) count++;
+    });
+    document.getElementById('results').textContent = `${count} propiedades`;
+  }));
+  document.querySelectorAll('a[href*="propiedades/"]').forEach(link => {
+    const url = new URL(link.href);
+    if (url.origin !== location.origin) return;
+    Object.entries(campaign).forEach(([key, value]) => url.searchParams.set(key, value));
+    link.href = url.href;
+  });
 })();
+

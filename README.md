@@ -1,27 +1,11 @@
 # Iker Sagal / Real Estate
+Sitio estático publicado en https://ikersagal.github.io/web/ con GitHub Pages mediante Actions.
 
-Landing estática de compra y renta en Querétaro. Sin formulario, dependencias, cookies de analítica, fotos de inventario ni datos de una identidad legal. La ilustración arquitectónica es conceptual.
-
-## Publicación
-
-GitHub Pages: https://ikersagal.github.io/web/
-
-En Settings → Pages, seleccionar GitHub Actions como Source. El workflow `pages.yml` publica únicamente los archivos públicos al actualizar `main`. No se configura dominio propio ni DNS.
+Incluye 10 propiedades con galerías, filtros accesibles, video de presentación local, contactos y perfiles de Instagram y TikTok. Sin formulario. Los precios son referencias de fichas y requieren confirmar vigencia. No se publican los PDF originales con contactos de terceros. Algunas imágenes de desarrollos se identifican como ilustrativas.
 
 ## Medición preparada
+Cada enlace de WhatsApp emite `whatsapp_click` a `window.dataLayer` y `sagal:whatsapp_click` como CustomEvent. Incluye cta_location, intent, property_id, page_path y UTM permitidas. Las UTM se conservan al navegar a una propiedad. No se recopilan otros parámetros ni se instala un proveedor de analítica. Para reportes centralizados falta conectar una herramienta de medición y su configuración correspondiente. Abrir WhatsApp no confirma que se haya enviado un mensaje.
 
-Cada CTA a WhatsApp agrega a `window.dataLayer` el evento `whatsapp_click`, con `cta_location`, `intent`, `page_path` y los parámetros UTM presentes en la URL. También emite `sagal:whatsapp_click` como evento del navegador. Los enlaces funcionan sin JavaScript.
+## Publicación
+El workflow copia solamente los archivos públicos, assets y propiedades. No hay dominio personalizado configurado. El diseño y el catálogo pueden actualizarse independientemente.
 
-Esto **no es un conteo centralizado ni una conversión confirmada**. La cola vive en la página y no envía eventos a ningún servidor. Para recopilar métricas, conectar un contenedor de Google Tag Manager o un proveedor aprobado, configurar `whatsapp_click` y revisar los requisitos de privacidad antes de habilitarlo. No se incluyó un ID ficticio ni un pixel de OpenAI.
-
-URL de campaña sugerida:
-
-`https://ikersagal.github.io/web/?utm_source=openai&utm_medium=paid&utm_campaign=queretaro&utm_content=compra`
-
-Un clic no confirma conversación, lead calificado, visita ni cierre; esos resultados deben contrastarse con el CRM. No se envían UTMs ni datos personales en el mensaje prellenado de WhatsApp.
-
-## Contenido
-
-Contactos suministrados: WhatsApp +525518934226, Instagram @ikersagal y sagalreals@gmail.com. No publicar precios, testimonios, rentabilidad ni disponibilidad sin verificación. Las referencias de zona no constituyen inventario disponible.
-
-Para conectar un dominio después, actualizar canonical, og:url y sitemap, además de la configuración de Pages y DNS.

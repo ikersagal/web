@@ -23,9 +23,11 @@ jobs:
         run: |
           mkdir _site
           cp index.html styles.css script.js favicon.svg robots.txt sitemap.xml .nojekyll _site/
+          cp -R assets propiedades _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
