@@ -17,6 +17,7 @@
         cta_location: link.dataset.whatsapp,
         intent: link.dataset.intent || 'consulta',
         property_id: link.dataset.property || null,
+        zone_id: link.dataset.zone || null,
         page_path: window.location.pathname,
         ...campaign
       };
@@ -34,7 +35,7 @@
     });
     document.getElementById('results').textContent = `${count} propiedades`;
   }));
-  document.querySelectorAll('a[href*="propiedades/"]').forEach(link => {
+  document.querySelectorAll('a[href*="propiedades/"], a[href*="blog/"]').forEach(link => {
     const url = new URL(link.href);
     if (url.origin !== location.origin) return;
     Object.entries(campaign).forEach(([key, value]) => url.searchParams.set(key, value));
