@@ -83,4 +83,3 @@
     link.prepend(icon);
   });
 })();
-
